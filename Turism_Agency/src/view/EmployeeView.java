@@ -2,17 +2,22 @@ package view;
 
 import business.HotelManager;
 import business.PensionManager;
+import business.SeasonManager;
 import dao.HotelDao;
 import dao.UserDao;
 import entity.Hotel;
+import entity.Season;
 import entity.User;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.MaskFormatter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.lang.management.ThreadInfo;
+import java.text.ParseException;
 import java.util.ArrayList;
 
 public class EmployeeView extends Layout {
@@ -37,16 +42,21 @@ public class EmployeeView extends Layout {
     private User user = new User();
     private HotelManager hotelManager;
     private PensionManager pensionManager;
+    private SeasonManager seasonManager;
     private DefaultTableModel tmdl_hotels = new DefaultTableModel();
     private DefaultTableModel tmdl_pensions = new DefaultTableModel();
+    private DefaultTableModel tmdl_season = new DefaultTableModel();
     private JPopupMenu hotels_menu;
     private HotelDao hotelDao;
+    private JFormattedTextField fld_start_date;
+    private JFormattedTextField fld_finish_date;
 
     public EmployeeView(User user) {
         this.user = user;
         this.hotelDao = new HotelDao();
         this.hotelManager = new HotelManager();
         this.pensionManager = new PensionManager();
+        this.seasonManager = new SeasonManager();
         add(container);
         guiInitilaze(850, 600);
         this.setTitle("Turism Agenty - Employee Screen");
@@ -59,7 +69,7 @@ public class EmployeeView extends Layout {
         loadHotelComponent();
 
         loadPensionTable(null);
-
+        loadSeasonTable(null);
 
     }
 
@@ -80,6 +90,17 @@ public class EmployeeView extends Layout {
                 @Override
                 public void windowClosed(WindowEvent e) {
                     loadPensionTable(null);
+                }
+            });
+        });
+
+        this.hotels_menu.add("Dönem Ekle").addActionListener(e -> {
+            int selectModelId = this.getTableSelectedRow(tbl_hotels,0);
+            SeasonView seasonView = new SeasonView(this.hotelManager.getById(selectModelId));
+            seasonView.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                   loadSeasonTable(null);
                 }
             });
         });
@@ -107,6 +128,15 @@ public class EmployeeView extends Layout {
         }
         this.createTable(this.tmdl_pensions, this.tbl_pension, col_pension, pensionList);
     }
+    public void loadSeasonTable(ArrayList<Object[]> seasonlist) {
+        Object[] col_season = {"ID", "Otel ID", "Başlangıç Tarihi" ,"Bitiş Tarihi"};
+        if (seasonlist == null) {
+            seasonlist = seasonManager.getForTable(col_season.length, seasonManager.findAll());
+
+        }
+        this.createTable(this.tmdl_season, this.tbl_season, col_season, seasonlist);
+    }
+
 
     public void loadLogout() {
 
@@ -118,4 +148,6 @@ public class EmployeeView extends Layout {
             }
         });
     }
+
+
 }

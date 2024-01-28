@@ -22,11 +22,13 @@ public class PensionView extends Layout{
 
 
     public PensionView(Hotel hotel){
+        this.pension = new Pension();
         this.hotel = hotel;
         this.hotelManager = new HotelManager();
         this.pensionManager = new PensionManager();
         this.add(container);
         this.guiInitilaze(500, 300);
+
 
         loadPensionTypes();  // combo panisyon tipleri
 
@@ -40,9 +42,6 @@ public class PensionView extends Layout{
        };
 
         btn_pension_save.addActionListener(e -> {
-
-//            ComboItem selectedPension = (ComboItem) cmb_pension_type.getSelectedItem();
-//            this.pension.setPensionType((PensionTypes) cmb_pension_type.getSelectedItem());
 
             ComboItem selectedPensionItem = (ComboItem) cmb_pension_type.getSelectedItem();
             int selectedPensionKey = selectedPensionItem.getKey();
