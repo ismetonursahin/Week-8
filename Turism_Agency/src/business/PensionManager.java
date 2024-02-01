@@ -23,6 +23,10 @@ public class PensionManager {
         return this.pensionDao.getById(id);
     }
 
+    public ArrayList<Pension> getByHotelId(int hotelId) {
+        return this.pensionDao.getByHotelId(hotelId);
+    }
+
     public ArrayList<Object[]> getForTable(int size , ArrayList<Pension> pensionList){
         ArrayList<Object[]> pensionRowList = new ArrayList<>();
         for(Pension pension : this.findAll()){

@@ -22,7 +22,7 @@ public class LoginView extends Layout {
         this.userManager = new UserManager();
         add(container);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setTitle("Turism Agenty");
+        setTitle("Tourism Agency");
         this.setSize(400,450);
         this.setVisible(true);
         this.setLocation(Helper.getLocationPoint("x",this.getSize()),Helper.getLocationPoint("y",this.getSize()));

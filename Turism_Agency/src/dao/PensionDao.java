@@ -5,10 +5,7 @@ import entity.Pension;
 import entity.User;
 import enums.PensionTypes;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class PensionDao {
@@ -48,6 +45,22 @@ public class PensionDao {
         return obj;
     }
 
+    public ArrayList<Pension> getByHotelId(int hotelId) {
+        ArrayList<Pension> obj = new ArrayList<>();
+        String query = "SELECT * FROM public.pension_types WHERE hotel_id = ?";
+        try {
+            PreparedStatement pr = con.prepareStatement(query);
+            pr.setInt(1, hotelId);
+            ResultSet rs = pr.executeQuery();
+            while (rs.next()) {
+                obj.add(this.match(rs));
+            }
+        } catch (Exception throwables) {
+            throwables.printStackTrace();
+        }
+        return obj;
+    }
+
     public boolean save(Pension pension){
         String query = "INSERT INTO public.pension_types " +
                 "(" +
@@ -65,6 +78,7 @@ public class PensionDao {
         }
         return true;
     }
+
 
 
     public Pension match(ResultSet rs) throws SQLException, ClassNotFoundException {

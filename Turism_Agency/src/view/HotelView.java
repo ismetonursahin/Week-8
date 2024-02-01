@@ -36,7 +36,8 @@ public class HotelView extends Layout {
         this.hotelManager = new HotelManager();
         this.add(container);
         this.guiInitilaze(600, 500);
-
+        this.setVisible(true);
+        this.setLocation(Helper.getLocationPoint("x",this.getSize()),Helper.getLocationPoint("y",this.getSize()));
 
         if (hotel.getId() != 0) {
             this.fld_hotel_name.setText(hotel.getName());

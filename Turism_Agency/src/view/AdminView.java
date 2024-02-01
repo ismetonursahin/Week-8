@@ -36,7 +36,7 @@ public class AdminView extends Layout {
         this.userManager = new UserManager();
         add(container);
         guiInitilaze(600, 450);
-        this.setTitle("Turism Agenty - Admin Screen");
+        this.setTitle("Tourism Agency - Admin Screen");
         this.user = user;
         if (this.user == null) {
             dispose();

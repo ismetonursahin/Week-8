@@ -47,6 +47,22 @@ public class SeasonDao {
         }
         return true;
     }
+
+    public ArrayList<Season> getByHotelId(int hotelId) {
+        ArrayList<Season> obj = new ArrayList<>();
+        String query = "SELECT * FROM public.seasons WHERE hotel_id = ?";
+        try {
+            PreparedStatement pr = con.prepareStatement(query);
+            pr.setInt(1, hotelId);
+            ResultSet rs = pr.executeQuery();
+            while (rs.next()) {
+                obj.add(this.match(rs));
+            }
+        } catch (Exception throwables) {
+            throwables.printStackTrace();
+        }
+        return obj;
+    }
     public Season getById(int id) {
         Season obj = null;
         String query = "SELECT * FROM public.seasons WHERE id = ?";

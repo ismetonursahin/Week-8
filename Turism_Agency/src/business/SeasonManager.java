@@ -23,6 +23,9 @@ public class SeasonManager {
     public Season getById(int id) {
         return this.seasonDao.getById(id);
     }
+    public ArrayList<Season> getByHotelId(int hotelId) {
+        return this.seasonDao.getByHotelId(hotelId);
+    }
 
     public ArrayList<Object[]> getForTable(int size , ArrayList<Season> seasonList){
         ArrayList<Object[]> seasonRowList = new ArrayList<>();
