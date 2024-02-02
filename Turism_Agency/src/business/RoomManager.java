@@ -5,6 +5,7 @@ import dao.RoomDao;
 import entity.Pension;
 import entity.Room;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -58,19 +59,25 @@ public class RoomManager {
         return this.roomDao.save(room);
     }
 
+    public boolean decreaseRoomStock(int id) throws SQLException {
+        return this.roomDao.decreaseRoomStock(id);
+    }
+    public boolean increaseRoomStock(int id) throws SQLException {
+        return this.roomDao.increaseRoomStock(id);
+    }
 
     public ArrayList<Room> searchForRoom(int hotelId ,String city ,String strt_date, String fnsh_date,String adult_num,String child_num) {
-        String query = "SELECT * FROM public.rooms as r LEFT JOIN public.hotels as h";
+        String query = "SELECT * FROM rooms r " +
+                "JOIN hotels h ON r.hotel_id = h.id " +
+                "LEFT JOIN seasons s ON r.season_id = s.id";
 
 
         ArrayList<String> where = new ArrayList<>();
         ArrayList<String> joinWhere = new ArrayList<>();
 
 
-        joinWhere.add("r.hotel_id = h.id");
-//
-//        strt_date = LocalDate.parse(strt_date, DateTimeFormatter.ofPattern("dd/MM/yyyy")).toString();
-//        fnsh_date = LocalDate.parse(fnsh_date, DateTimeFormatter.ofPattern("dd/MM/yyyy")).toString();
+        strt_date = LocalDate.parse(strt_date, DateTimeFormatter.ofPattern("dd/MM/yyyy")).toString();
+        fnsh_date = LocalDate.parse(fnsh_date, DateTimeFormatter.ofPattern("dd/MM/yyyy")).toString();
 
         if (hotelId != 0) {
             where.add("h.id = '" + hotelId + "'" );
@@ -86,11 +93,14 @@ public class RoomManager {
                 int total_person = adultNum+childNum;
                 where.add("r.bed >= '" + (total_person) + "'");
             } catch (NumberFormatException e) {
-                // Boş bir string tamsayıya dönüştürülemediğinde yapılacak işlemler
                 e.printStackTrace();
             }
         }
 
+        where.add("(s.start_date <= '" + strt_date + "')");
+        where.add("(s.finish_date >= '" + fnsh_date + "')");
+
+        where.add("r.stock > 0");
 
         String whereStr = String.join(" AND ", where);
         String joinStr = String.join(" AND ", joinWhere);
@@ -103,26 +113,24 @@ public class RoomManager {
             query += " WHERE " + whereStr;
         }
 
+
+
         System.out.println(query);
-//
-//        ArrayList<Room> searchedCarList = this.roomDao.selectByQuery(query);
-//        bookOrWhere.add("('" + strt_date + "' BETWEEN book_strt_date AND book_fnsh_date)");
-//        bookOrWhere.add("('" + fnsh_date + "' BETWEEN book_strt_date AND book_fnsh_date)");
-//        bookOrWhere.add("(book_strt_date BETWEEN '" + strt_date + "' AND '" + fnsh_date + "')");
-//        bookOrWhere.add("(book_fnsh_date BETWEEN '" + strt_date + "' AND '" + fnsh_date + "')");
-//
-//
-//        String bookOrWhereStr = String.join(" OR ", bookOrWhere);
-//        String bookQuery = "SELECT * fROM public.book WHERE " + bookOrWhereStr;
+
+        ArrayList<Room> searchedRoomList = this.roomDao.selectByQuery(query);
+
+        //    String bookOrWhereStr = String.join(" OR ", bookOrWhere);
+        //  String bookQuery = "SELECT * fROM public.book WHERE " + bookOrWhereStr;
 //
 //        ArrayList<Book> bookList = this.bookDao.selectByQuery(bookQuery);
 //        ArrayList<Integer> busyCarId = new ArrayList<>();
 //        for (Book book : bookList) {
 //            busyCarId.add(book.getCar_id());
-//
 //        }
-//
+
 //        searchedCarList.removeIf(car -> busyCarId.contains(car.getId()));
+
+      //  ArrayList<Room> searchedRoomList = this.roomDao.selectByQuery(query);
 
         return this.roomDao.selectByQuery(query);
     }

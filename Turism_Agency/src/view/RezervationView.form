@@ -1,0 +1,719 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="view.RezervationView">
+  <grid id="27dc6" binding="container" layout-manager="GridLayoutManager" row-count="8" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="15" left="15" bottom="15" right="15"/>
+    <constraints>
+      <xy x="20" y="20" width="896" height="866"/>
+    </constraints>
+    <properties>
+      <background color="-2174794"/>
+      <foreground color="-12701134"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <grid id="e6980" binding="pnl_room_info" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-2174794"/>
+          <font name="Britannic Bold" size="26" style="1"/>
+          <foreground color="-8"/>
+        </properties>
+        <border type="none" title="Otel Bilgileri"/>
+        <children>
+          <grid id="1ab25" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-2174794"/>
+              <enabled value="true"/>
+              <foreground color="-2297103"/>
+            </properties>
+            <border type="none" title="Otel Adresi"/>
+            <children>
+              <component id="39906" class="javax.swing.JLabel" binding="lbl_region_rez">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-16777216"/>
+                  <enabled value="true"/>
+                  <font name="Calibri" size="16" style="1"/>
+                  <foreground color="-12701134"/>
+                  <text value="Bölge"/>
+                </properties>
+              </component>
+              <component id="bd93c" class="javax.swing.JLabel" binding="lbl_adress_rez">
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-16777216"/>
+                  <enabled value="true"/>
+                  <font name="Calibri" size="16" style="1"/>
+                  <foreground color="-12701134"/>
+                  <text value="Adres"/>
+                </properties>
+              </component>
+              <component id="edbd9" class="javax.swing.JLabel" binding="lbl_city_rez">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-16777216"/>
+                  <enabled value="true"/>
+                  <font name="Calibri" size="16" style="1"/>
+                  <foreground color="-12701134"/>
+                  <text value="Şehir"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="cfbaa" layout-manager="GridLayoutManager" row-count="5" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-2174794"/>
+              <enabled value="true"/>
+              <foreground color="-16777216"/>
+            </properties>
+            <border type="none" title="Tesis Özellikleri"/>
+            <children>
+              <vspacer id="b4f8e">
+                <constraints>
+                  <grid row="4" column="0" row-span="1" col-span="3" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
+              <component id="bf1a9" class="javax.swing.JRadioButton" binding="rd_park_rez">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-2174794"/>
+                  <enabled value="false"/>
+                  <foreground color="-12701134"/>
+                  <text value="Otopark"/>
+                </properties>
+              </component>
+              <component id="ab984" class="javax.swing.JRadioButton" binding="rd_wifi_rez">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-2174794"/>
+                  <enabled value="false"/>
+                  <foreground color="-12701134"/>
+                  <text value="WiFi"/>
+                </properties>
+              </component>
+              <component id="54fe1" class="javax.swing.JRadioButton" binding="rd_pool_rez">
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-2174794"/>
+                  <enabled value="false"/>
+                  <foreground color="-12701134"/>
+                  <text value="Yüzme Havuzu"/>
+                </properties>
+              </component>
+              <component id="ca820" class="javax.swing.JRadioButton" binding="rd_concierge_rez">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-2174794"/>
+                  <enabled value="false"/>
+                  <foreground color="-12701134"/>
+                  <text value="Hotel Concierge"/>
+                </properties>
+              </component>
+              <component id="aafef" class="javax.swing.JRadioButton" binding="rd_spa_rez">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-2174794"/>
+                  <enabled value="false"/>
+                  <foreground color="-12701134"/>
+                  <text value="SPA"/>
+                </properties>
+              </component>
+              <component id="c19f5" class="javax.swing.JRadioButton" binding="rd_service_rez">
+                <constraints>
+                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-2174794"/>
+                  <enabled value="false"/>
+                  <foreground color="-12701134"/>
+                  <text value="7/24 Oda Servisi"/>
+                </properties>
+              </component>
+              <component id="cc2d4" class="javax.swing.JRadioButton" binding="rd_fitness_rez">
+                <constraints>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-2174794"/>
+                  <enabled value="false"/>
+                  <foreground color="-12701134"/>
+                  <text value="Spor Salonu"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+        </children>
+      </grid>
+      <grid id="a11e2" layout-manager="GridLayoutManager" row-count="4" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="6" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-2174794"/>
+          <foreground color="-792077"/>
+        </properties>
+        <border type="none" title="İletişim Bilgileri"/>
+        <children>
+          <component id="fcc15" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="Calibri" size="18" style="0"/>
+              <foreground color="-12701134"/>
+              <text value="Ad Soyad"/>
+            </properties>
+          </component>
+          <component id="506ac" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="Calibri" size="18" style="0"/>
+              <foreground color="-12701134"/>
+              <text value="Telefon"/>
+            </properties>
+          </component>
+          <component id="9c1e8" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="Calibri" size="18" style="0"/>
+              <foreground color="-12701134"/>
+              <text value="E-posta"/>
+            </properties>
+          </component>
+          <component id="3cbed" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="Calibri" size="18" style="0"/>
+              <foreground color="-12701134"/>
+              <text value="T.C."/>
+            </properties>
+          </component>
+          <component id="fb96d" class="javax.swing.JTextField" binding="fld_rez_name">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-2174794"/>
+              <font name="Calibri" size="16" style="1"/>
+              <foreground color="-12701134"/>
+              <text value=""/>
+            </properties>
+          </component>
+          <component id="1dba8" class="javax.swing.JTextField" binding="fld_rez_tc">
+            <constraints>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-2174794"/>
+              <font name="Calibri" size="16" style="1"/>
+              <foreground color="-12701134"/>
+            </properties>
+          </component>
+          <component id="9a15" class="javax.swing.JTextField" binding="fld_rez_mail">
+            <constraints>
+              <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-2174794"/>
+              <font name="Calibri" size="16" style="1"/>
+              <foreground color="-12701134"/>
+            </properties>
+          </component>
+          <component id="33b00" class="javax.swing.JTextField" binding="fld_rez_phone">
+            <constraints>
+              <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-2174794"/>
+              <font name="Calibri" size="16" style="1"/>
+              <foreground color="-12701134"/>
+            </properties>
+          </component>
+          <component id="8da8d" class="javax.swing.JButton" binding="btn_rez_save">
+            <constraints>
+              <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-12701134"/>
+              <enabled value="true"/>
+              <font name="Calibri" size="16" style="1"/>
+              <foreground color="-262"/>
+              <hideActionText value="false"/>
+              <horizontalTextPosition value="11"/>
+              <text value="Rezervasyon Oluştur"/>
+            </properties>
+          </component>
+          <hspacer id="419db">
+            <constraints>
+              <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </hspacer>
+        </children>
+      </grid>
+      <grid id="f8cc3" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-2174794"/>
+          <foreground color="-262147"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="f4cb0" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-16777216"/>
+              <font name="Calibri" size="32" style="0"/>
+              <foreground color="-12701134"/>
+              <text value="Rezervasyon Oluştur / Güncelle"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <hspacer id="11dc1">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <hspacer id="fe886">
+        <constraints>
+          <grid row="7" column="0" row-span="1" col-span="2" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <grid id="fd832" layout-manager="GridLayoutManager" row-count="7" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="5" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-2174794"/>
+          <enabled value="true"/>
+          <foreground color="-8"/>
+        </properties>
+        <border type="none" title="Rezervazyon Bilgileri"/>
+        <children>
+          <component id="8056f" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-3549995"/>
+              <enabled value="true"/>
+              <font name="Calibri" size="18" style="0"/>
+              <foreground color="-12701134"/>
+              <text value="Giriş Tarihi"/>
+            </properties>
+          </component>
+          <vspacer id="a1739">
+            <constraints>
+              <grid row="6" column="0" row-span="1" col-span="4" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </vspacer>
+          <component id="1fc6f" class="javax.swing.JTextField" binding="fld_child_number">
+            <constraints>
+              <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-2174794"/>
+              <editable value="false"/>
+              <enabled value="false"/>
+              <foreground color="-16777216"/>
+            </properties>
+          </component>
+          <component id="f0413" class="javax.swing.JTextField" binding="fld_check_in">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-2174794"/>
+              <editable value="false"/>
+              <enabled value="false"/>
+              <foreground color="-16777216"/>
+            </properties>
+          </component>
+          <component id="ca84" class="javax.swing.JTextField" binding="fld_check_out">
+            <constraints>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-2174794"/>
+              <editable value="false"/>
+              <enabled value="false"/>
+              <foreground color="-16777216"/>
+            </properties>
+          </component>
+          <component id="13fe2" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <enabled value="true"/>
+              <font name="Calibri" size="18" style="0"/>
+              <foreground color="-12701134"/>
+              <text value="Çıkış Tarihi"/>
+            </properties>
+          </component>
+          <component id="6f18e" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <enabled value="true"/>
+              <font name="Calibri" size="18" style="0"/>
+              <foreground color="-12701134"/>
+              <text value="Çocuk Sayısı"/>
+            </properties>
+          </component>
+          <component id="33308" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <enabled value="true"/>
+              <font name="Calibri" size="18" style="0"/>
+              <foreground color="-12701134"/>
+              <text value="Yetişkin Sayısı"/>
+            </properties>
+          </component>
+          <component id="2d5a5" class="javax.swing.JTextField" binding="fld_adult_number">
+            <constraints>
+              <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-2174794"/>
+              <editable value="false"/>
+              <enabled value="false"/>
+              <foreground color="-16777216"/>
+              <text value=""/>
+            </properties>
+          </component>
+          <component id="ad67a" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <enabled value="true"/>
+              <font name="Calibri" size="18" style="0"/>
+              <foreground color="-12701134"/>
+              <text value="Toplam Fiyat"/>
+            </properties>
+          </component>
+          <component id="c4ff4" class="javax.swing.JTextField" binding="fld_total_price">
+            <constraints>
+              <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-2174794"/>
+              <editable value="false"/>
+              <enabled value="false"/>
+              <foreground color="-16777216"/>
+            </properties>
+          </component>
+          <component id="3ad74" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <enabled value="true"/>
+              <font name="Calibri" size="18" style="0"/>
+              <foreground color="-12701134"/>
+              <text value="Yetişkin Fiyat"/>
+            </properties>
+          </component>
+          <component id="237c0" class="javax.swing.JTextField" binding="fld_adult_price">
+            <constraints>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-2174794"/>
+              <editable value="false"/>
+              <enabled value="false"/>
+              <foreground color="-16777216"/>
+            </properties>
+          </component>
+          <component id="14255" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <enabled value="true"/>
+              <font name="Calibri" size="18" style="0"/>
+              <foreground color="-12701134"/>
+              <text value="Çocuk Fiyat"/>
+            </properties>
+          </component>
+          <component id="8bbe6" class="javax.swing.JTextField" binding="fld_child_price">
+            <constraints>
+              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-2174794"/>
+              <editable value="false"/>
+              <enabled value="false"/>
+              <foreground color="-16777216"/>
+            </properties>
+          </component>
+          <component id="a10e0" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <enabled value="true"/>
+              <font name="Calibri" size="18" style="0"/>
+              <foreground color="-12701134"/>
+              <text value="Konaklama (Gün)"/>
+            </properties>
+          </component>
+          <component id="5938d" class="javax.swing.JTextField" binding="fld_day">
+            <constraints>
+              <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-2174794"/>
+              <editable value="false"/>
+              <enabled value="false"/>
+              <foreground color="-16777216"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="8a994" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-2174794"/>
+          <enabled value="true"/>
+        </properties>
+        <border type="none" title="Oda Bilgileri"/>
+        <children>
+          <grid id="1e6f5" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-2174794"/>
+              <foreground color="-16777216"/>
+            </properties>
+            <border type="none" title="Oda Tipi"/>
+            <children>
+              <component id="ef3c3" class="javax.swing.JLabel" binding="lbl_room_type">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <enabled value="true"/>
+                  <font name="Calibri" size="16" style="1"/>
+                  <foreground color="-12701134"/>
+                  <text value="oda tip"/>
+                </properties>
+              </component>
+              <component id="ab444" class="javax.swing.JLabel" binding="lbl_mt">
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <enabled value="true"/>
+                  <font name="Calibri" size="16" style="1"/>
+                  <foreground color="-12701134"/>
+                  <text value="m2"/>
+                </properties>
+              </component>
+              <component id="f7138" class="javax.swing.JLabel" binding="lbl_bed_num">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <enabled value="true"/>
+                  <font name="Calibri" size="16" style="1"/>
+                  <foreground color="-12701134"/>
+                  <text value="yatak sayısı"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="dc72c" layout-manager="GridLayoutManager" row-count="4" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-2174794"/>
+            </properties>
+            <border type="none" title="Oda Hizmetleri"/>
+            <children>
+              <component id="ad8ec" class="javax.swing.JRadioButton" binding="rd_tv_rez">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-2174794"/>
+                  <enabled value="false"/>
+                  <foreground color="-12701134"/>
+                  <text value="TV"/>
+                </properties>
+              </component>
+              <vspacer id="72a">
+                <constraints>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
+              <component id="2fd8b" class="javax.swing.JRadioButton" binding="rd_safe_rez">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-2174794"/>
+                  <enabled value="false"/>
+                  <foreground color="-12701134"/>
+                  <text value="Kasa"/>
+                </properties>
+              </component>
+              <component id="9a1d7" class="javax.swing.JRadioButton" binding="re_minibar_rez">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-2174794"/>
+                  <enabled value="false"/>
+                  <foreground color="-12701134"/>
+                  <text value="Minibar"/>
+                </properties>
+              </component>
+              <component id="ae41e" class="javax.swing.JRadioButton" binding="rd_condi_rez">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-2174794"/>
+                  <enabled value="false"/>
+                  <foreground color="-12701134"/>
+                  <text value="Klima"/>
+                </properties>
+              </component>
+              <component id="67893" class="javax.swing.JRadioButton" binding="rd_consol_rez">
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-2174794"/>
+                  <enabled value="false"/>
+                  <foreground color="-12701134"/>
+                  <text value="Oyun Konsolu"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="51e84" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-2174794"/>
+              <foreground color="-262147"/>
+            </properties>
+            <border type="none" title="Pansiyon Tipi"/>
+            <children>
+              <component id="899c0" class="javax.swing.JLabel" binding="lbl_pension">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="Calibri" size="16" style="1"/>
+                  <foreground color="-12701134"/>
+                  <text value="Label"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+        </children>
+      </grid>
+      <component id="a4796" class="javax.swing.JLabel" binding="lbl_hotel_name">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-16777216"/>
+          <enabled value="true"/>
+          <font name="Calibri" size="20" style="0"/>
+          <foreground color="-12701134"/>
+          <text value="Otel Adı"/>
+        </properties>
+      </component>
+      <component id="4963f" class="javax.swing.JLabel" binding="lbl_star">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Calibri" size="18" style="0"/>
+          <text value="Yıldız"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>

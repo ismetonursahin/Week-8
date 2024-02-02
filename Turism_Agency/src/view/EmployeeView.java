@@ -1,12 +1,11 @@
 package view;
 
-import business.HotelManager;
-import business.PensionManager;
-import business.RoomManager;
-import business.SeasonManager;
+import business.*;
 import core.ComboItem;
+import core.Helper;
 import dao.HotelDao;
 import entity.Hotel;
+import entity.Rezervation;
 import entity.Room;
 import entity.User;
 
@@ -17,6 +16,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
 
@@ -31,7 +31,7 @@ public class EmployeeView extends Layout {
     private JPanel pnl_rooms;
     private JPanel pnl_reservation;
     private JTable tbl_room;
-    private JTable table2;
+    private JTable tbl_rez;
     private JPanel pnl_pensions;
     private JPanel pnl_seasons;
     private JScrollPane scrl_pension;
@@ -50,18 +50,24 @@ public class EmployeeView extends Layout {
     private PensionManager pensionManager;
     private SeasonManager seasonManager;
     private RoomManager roomManager;
+    private RezervationManager rezervationManager;
     private DefaultTableModel tmdl_hotels = new DefaultTableModel();
     private DefaultTableModel tmdl_pensions = new DefaultTableModel();
     private DefaultTableModel tmdl_season = new DefaultTableModel();
     private DefaultTableModel tmdl_room = new DefaultTableModel();
+    private DefaultTableModel tmdl_rez = new DefaultTableModel();
     private JPopupMenu hotels_menu;
     private JPopupMenu room_menu;
+    private JPopupMenu rezervation_menu;
     private HotelDao hotelDao;
     private JFormattedTextField fld_strt_date;
     private JFormattedTextField fld_finish_date;
     private JComboBox cmb_hotel_city;
     private JComboBox cmb_hotel_name;
+    private JScrollPane scrl_rez;
     private Object[] col_room;
+    private Object[] col_rezervation;
+
 
     public EmployeeView(User user) {
         this.user = user;
@@ -70,6 +76,7 @@ public class EmployeeView extends Layout {
         this.pensionManager = new PensionManager();
         this.seasonManager = new SeasonManager();
         this.roomManager = new RoomManager();
+        this.rezervationManager = new RezervationManager();
         add(container);
         guiInitilaze(1200, 600);
         this.setTitle("Tourism Agency - Employee Screen");
@@ -88,6 +95,9 @@ public class EmployeeView extends Layout {
         loadRoomTable(null);
 
         loadRoomFilter();
+
+        loadRezervationComponent();
+        loadRezervationTable(null);
 
     }
 
@@ -166,13 +176,88 @@ public class EmployeeView extends Layout {
         this.createTable(this.tmdl_room, this.tbl_room, col_room, roomList);
     }
 
+    public void loadRezervationTable(ArrayList<Object[]> rezervationList) {
+        col_rezervation = new Object[]{"ID", "Oda ID", "İsim Soyisim", "T.C.", "E-Posta", "Telefon", "Giriş Tarihi", "Çıkış Tarihi", "Gün", "Toplam Tutar", "Misafir Sayısı"};
+        if (rezervationList == null) {
+            rezervationList = rezervationManager.getForTable(col_rezervation.length, rezervationManager.findAll());
+
+        }
+        this.createTable(this.tmdl_rez, this.tbl_rez, col_rezervation, rezervationList);
+    }
+
+    public void loadRezervationComponent() {
+
+        tableRowSelect(this.tbl_rez);
+        this.rezervation_menu = new JPopupMenu();
+        this.rezervation_menu.add("Güncelle").addActionListener(e -> {
+
+            int selectedRezId = this.getTableSelectedRow(tbl_rez, 0);
+            Rezervation selectReservation = this.rezervationManager.getById(selectedRezId);
+
+            int selectedRoomId = selectReservation.getRoom_id();
+            Room selectedRoom = this.roomManager.getById(selectedRoomId);
+
+            String inDate = (this.fld_strt_date.getText());
+            String outDate = (this.fld_finish_date.getText());
+
+            String adultNum = this.fld_adult_num.getText();
+            String childNum = this.fld_child_num.getText();
+
+            RezervationView rezervationView = new RezervationView(selectReservation, selectedRoom, inDate, outDate, adultNum, childNum);
+            rezervationView.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    loadRezervationTable(null);
+                    loadRoomTable(null);
+                }
+            });
+
+
+            // Değerlendirme Formu - 22
+            this.rezervation_menu.add("Sil").addActionListener(event -> {
+                // Deleting a reservation
+                if (Helper.confirm("sure")) {
+                    int selectedReservationId = this.getTableSelectedRow(tbl_rez, 0);
+                    Rezervation selectedRezervation = this.rezervationManager.getById(selectedReservationId);
+                    int selectRoomId = selectedRezervation.getId();
+
+                    if (this.rezervationManager.delete(selectedReservationId)) {
+                        // Deleting the reservation and updating tables
+                        // Değerlendirme Formu - 24
+                        Helper.showMsg("done");
+                        // Değerlendirme Formu - 23
+                        try {
+                            this.roomManager.increaseRoomStock(selectedRoomId);
+                        } catch (SQLException ex) {
+                            throw new RuntimeException(ex);
+                        }
+                        loadRezervationTable(null);
+                        loadRoomTable(null);
+                    } else {
+                        // Değerlendirme Formu - 25
+                        Helper.showMsg("error");
+                    }
+                }
+
+            });
+
+            this.tbl_rez.setComponentPopupMenu(rezervation_menu);
+
+        });
+    }
+
+
     public void loadRoomComponent() {
-        btn_room_add.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                RoomView roomView = new RoomView();
-                loadRoomTable(null);
-            }
+        this.fld_child_num.setText("0");
+        this.fld_adult_num.setText("0");
+        btn_room_add.addActionListener(e -> {
+            RoomView roomView = new RoomView();
+            roomView.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    loadRoomTable(null);
+                }
+            });
         });
 
         btn_room_search.addActionListener(e -> {
@@ -195,23 +280,58 @@ public class EmployeeView extends Layout {
                 );
                 System.out.println(roomList);
 
-            ArrayList<Object[]> roomRow = this.roomManager.getForTable(this.col_room.length, roomList);
-            loadRoomTable(roomRow);
+                ArrayList<Object[]> roomRow = this.roomManager.getForTable(this.col_room.length, roomList);
+                loadRoomTable(roomRow);
 
             }
         });
 
+
         tableRowSelect(this.tbl_room);
         this.room_menu = new JPopupMenu();
         this.room_menu.add("Rezervasyon Yap").addActionListener(e -> {
+            String adultNumText = this.fld_adult_num.getText();
+            String childNumText = this.fld_child_num.getText();
 
+            if (!isNumeric(adultNumText)) {
+                // Eğer adultNumText bir sayı değilse, kullanıcıya bir hata mesajı göster
+                Helper.showMsg(adultNumText + " Geçerli bir sayı değil.");
+                return; // Fonksiyonu burada sonlandır, çünkü devam etmek anlamsız olacaktır.
+            }
+            if (!isNumeric(childNumText)) {
+                Helper.showMsg(childNumText + " Geçerli bir sayı değil.");
+                return;
+            }
+
+
+
+            int selectedRoomId = this.getTableSelectedRow(tbl_room, 0);
+            RezervationView rezervationView = new RezervationView(
+                    this.rezervationManager.getById(id),
+                    this.roomManager.getById(selectedRoomId),
+                    this.fld_strt_date.getText(),
+                    this.fld_finish_date.getText(),
+                    this.fld_adult_num.getText(),
+                    this.fld_child_num.getText()
+            );
+            rezervationView.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    try {
+                        roomManager.decreaseRoomStock(selectedRoomId);
+                    } catch (SQLException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    loadRezervationTable(null);
+                    loadRoomTable(null);
+                }
+            });
         });
+
         this.tbl_room.setComponentPopupMenu(room_menu);
-
-
         btn_room_clear.addActionListener(e -> {
-                loadRoomFilter();
-                loadRoomTable(null);
+            loadRoomFilter();
+            loadRoomTable(null);
         });
     }
 
@@ -239,7 +359,6 @@ public class EmployeeView extends Layout {
         this.cmb_hotel_city.setSelectedItem(null);
     }
 
-
     public void loadLogout() {
 
         btn_logout.addActionListener(new ActionListener() {
@@ -251,10 +370,22 @@ public class EmployeeView extends Layout {
         });
     }
 
+    private void createUIComponents() throws ParseException {
+        this.fld_strt_date = new JFormattedTextField(new MaskFormatter("##/##/####"));
+        this.fld_strt_date.setText("05/07/2024");
+        this.fld_finish_date = new JFormattedTextField(new MaskFormatter("##/##/####"));
+        this.fld_finish_date.setText("10/07/2024");
+    }
 
-//    private void createUIComponents() throws ParseException {
-//       this.fld_strt_date= new JFormattedTextField(new MaskFormatter("##/##/####"));
-//       this.fld_finish_date= new JFormattedTextField(new MaskFormatter("##/##/####"));
-//
-//    }
+    private boolean isNumeric(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        try {
+            int i = Integer.parseInt(strNum);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
 }

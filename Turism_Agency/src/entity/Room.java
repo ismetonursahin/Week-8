@@ -10,6 +10,7 @@ public class Room {
   private RoomTypes room_type;
   private int stock;
   private Hotel hotel;
+  private Season season;
   private int adult_price;
   private int child_price;
   private int meter;
@@ -159,6 +160,14 @@ public class Room {
 
     public void setCondition(boolean condition) {
         this.condition = condition;
+    }
+
+    public Season getSeason() {
+        return season;
+    }
+
+    public void setSeason(Season season) {
+        this.season = season;
     }
 
     public int getBed() {

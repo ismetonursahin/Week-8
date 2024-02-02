@@ -6,7 +6,7 @@ import java.awt.*;
 public class Helper {
     public  static void setTheme(){
         for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()){
-            if ("Windows".equals(info.getName())){
+            if ("Nimbus".equals(info.getName())){
                 try {
                     UIManager.setLookAndFeel(info.getClassName());
                 }catch (Exception e){

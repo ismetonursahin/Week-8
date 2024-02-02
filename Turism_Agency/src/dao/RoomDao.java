@@ -14,9 +14,15 @@ import java.util.ArrayList;
 
 public class RoomDao {
     private final Connection con ;
+    public HotelDao hotelDao ;
+    public SeasonDao seasonDao;
+    public PensionDao pensionDao;
 
     public RoomDao() {
         this.con = Db.getInstance();
+        this.hotelDao = new HotelDao();
+        this.seasonDao = new SeasonDao();
+        this.pensionDao = new PensionDao();
     }
 
     public ArrayList<Room> findAll(){
@@ -78,6 +84,21 @@ public class RoomDao {
 
         return room;
     }
+
+    public boolean decreaseRoomStock(int id) throws SQLException {
+        String query = "UPDATE public.rooms SET stock = stock-1 WHERE id = ?";
+        PreparedStatement pr = this.con.prepareStatement(query);
+        pr.setInt(1,id);
+        return pr.executeUpdate() != -1;
+    }
+    public boolean increaseRoomStock(int id) throws SQLException {
+        String query = "UPDATE public.rooms SET stock = stock+1 WHERE id = ?";
+        PreparedStatement pr = this.con.prepareStatement(query);
+        pr.setInt(1,id);
+        return pr.executeUpdate() != -1;
+    }
+
+
     public boolean save(Room room){
         String query = "INSERT INTO public.rooms" +
                 "(" +
@@ -140,6 +161,8 @@ public class RoomDao {
         obj.setConsol(rs.getBoolean("consol"));
         obj.setSafe(rs.getBoolean("safe"));
         obj.setCondition(rs.getBoolean("condition"));
+        obj.setHotel(this.hotelDao.getById(rs.getInt("hotel_id")));
+        obj.setSeason(this.seasonDao.getById(rs.getInt("season_id")));
         return obj;
     }
 }
