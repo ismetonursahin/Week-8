@@ -16,13 +16,15 @@ public class Rezervation {
     private String guest_mail;
     private String guest_phone;
     private int day;
+    private int adult_num;
+    private int child_num;
     private Hotel hotel;
     private Room room;
 
     public Rezervation() {
     }
 
-    public Rezervation(int id, int room_id, int total_price, LocalDate check_in, LocalDate check_out, int guest_num, String guest_name, String guest_tc, String guest_mail, String guest_phone, int day, Hotel hotel, Room room) {
+    public Rezervation(int adult_num, int child_num , int id, int room_id, int total_price, LocalDate check_in, LocalDate check_out, int guest_num, String guest_name, String guest_tc, String guest_mail, String guest_phone, int day, Hotel hotel, Room room) {
         this.id = id;
         this.room_id = room_id;
         this.total_price = total_price;
@@ -36,6 +38,8 @@ public class Rezervation {
         this.day = day;
         this.hotel = hotel;
         this.room = room;
+        this.adult_num = adult_num;
+        this.child_num = child_num;
     }
 
     public int getId() {
@@ -140,6 +144,22 @@ public class Rezervation {
 
     public void setRoom(Room room) {
         this.room = room;
+    }
+
+    public int getAdult_num() {
+        return adult_num;
+    }
+
+    public void setAdult_num(int adult_num) {
+        this.adult_num = adult_num;
+    }
+
+    public int getChild_num() {
+        return child_num;
+    }
+
+    public void setChild_num(int child_num) {
+        this.child_num = child_num;
     }
 
     @Override

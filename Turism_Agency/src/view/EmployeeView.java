@@ -200,8 +200,8 @@ public class EmployeeView extends Layout {
             String inDate = (this.fld_strt_date.getText());
             String outDate = (this.fld_finish_date.getText());
 
-            String adultNum = this.fld_adult_num.getText();
-            String childNum = this.fld_child_num.getText();
+            String adultNum = String.valueOf(this.rezervationManager.getById(selectedRezId).getAdult_num()) ;
+            String childNum = String.valueOf(this.rezervationManager.getById(selectedRezId).getChild_num());
 
             RezervationView rezervationView = new RezervationView(selectReservation, selectedRoom, inDate, outDate, adultNum, childNum);
             rezervationView.addWindowListener(new WindowAdapter() {
@@ -212,40 +212,38 @@ public class EmployeeView extends Layout {
                 }
             });
 
-
             // Değerlendirme Formu - 22
-            this.rezervation_menu.add("Sil").addActionListener(event -> {
-                // Deleting a reservation
-                if (Helper.confirm("sure")) {
-                    int selectedReservationId = this.getTableSelectedRow(tbl_rez, 0);
-                    Rezervation selectedRezervation = this.rezervationManager.getById(selectedReservationId);
-                    int selectRoomId = selectedRezervation.getId();
-
-                    if (this.rezervationManager.delete(selectedReservationId)) {
-                        // Deleting the reservation and updating tables
-                        // Değerlendirme Formu - 24
-                        Helper.showMsg("done");
-                        // Değerlendirme Formu - 23
-                        try {
-                            this.roomManager.increaseRoomStock(selectedRoomId);
-                        } catch (SQLException ex) {
-                            throw new RuntimeException(ex);
-                        }
-                        loadRezervationTable(null);
-                        loadRoomTable(null);
-                    } else {
-                        // Değerlendirme Formu - 25
-                        Helper.showMsg("error");
-                    }
-                }
-
-            });
-
-            this.tbl_rez.setComponentPopupMenu(rezervation_menu);
 
         });
-    }
 
+
+        this.rezervation_menu.add("Sil").addActionListener(e -> {
+            // Deleting a reservation
+            if (Helper.confirm("sure")) {
+                int selectedReservationId = this.getTableSelectedRow(tbl_rez, 0);
+                Rezervation selectedRezervation = this.rezervationManager.getById(selectedReservationId);
+                int selectRoomId = selectedRezervation.getRoom_id();
+
+                if (this.rezervationManager.delete(selectedReservationId)) {
+                    // Deleting the reservation and updating tables
+                    // Değerlendirme Formu - 24
+                    Helper.showMsg("done");
+                    // Değerlendirme Formu - 23
+                    try {
+                        this.roomManager.increaseRoomStock(selectRoomId);
+                    } catch (SQLException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    loadRezervationTable(null);
+                    loadRoomTable(null);
+                } else {
+                    // Değerlendirme Formu - 25
+                    Helper.showMsg("error");
+                }
+            }
+        });
+        this.tbl_rez.setComponentPopupMenu(rezervation_menu);
+    }
 
     public void loadRoomComponent() {
         this.fld_child_num.setText("0");
@@ -303,11 +301,9 @@ public class EmployeeView extends Layout {
                 return;
             }
 
-
-
             int selectedRoomId = this.getTableSelectedRow(tbl_room, 0);
             RezervationView rezervationView = new RezervationView(
-                    this.rezervationManager.getById(id),
+                    null,
                     this.roomManager.getById(selectedRoomId),
                     this.fld_strt_date.getText(),
                     this.fld_finish_date.getText(),

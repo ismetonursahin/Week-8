@@ -63,7 +63,6 @@ public class RezervationView extends Layout {
 
     public RezervationView(Rezervation rezervation ,Room room, String start_date, String finish_date, String adult_num, String child_num) {
         this.room = room;
-        this.rezervation = new Rezervation();
         this.hotel = new Hotel();
         this.hotelManager = new HotelManager();
         this.roomManager = new RoomManager();
@@ -71,9 +70,14 @@ public class RezervationView extends Layout {
         add(container);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setTitle("Turism Agency - Rezervation");
-        this.guiInitilaze(900, 800);
+        this.guiInitilaze(950, 850);
         this.setLocation(Helper.getLocationPoint("x", this.getSize()), Helper.getLocationPoint("y", this.getSize()));
 
+        if (rezervation == null){
+            this.rezervation = new Rezervation();
+        } else {
+            this.rezervation = rezervation;
+        }
 
         this.lbl_hotel_name.setText("Otel : " + room.getHotel().getName());
         this.lbl_star.setText("Yıldız : " + room.getHotel().getStar());
@@ -98,10 +102,17 @@ public class RezervationView extends Layout {
         this.rd_condi_rez.setSelected(room.isCondition());
         this.fld_check_in.setText(start_date.toString());
         this.fld_check_out.setText(finish_date.toString());
-        this.fld_adult_number.setText(String.valueOf(adult_num));
-        this.fld_child_number.setText(String.valueOf(child_num));
+        this.fld_adult_number.setText(adult_num);
+        this.fld_child_number.setText(child_num);
         this.fld_adult_price.setText(String.valueOf(room.getAdult_price()));
         this.fld_child_price.setText(String.valueOf(room.getChild_price()));
+
+        if (this.rezervation.getId() != 0){
+            this.fld_rez_name.setText(this.rezervation.getGuest_name());
+            this.fld_rez_mail.setText(this.rezervation.getGuest_mail());
+            this.fld_rez_phone.setText(this.rezervation.getGuest_phone());
+            this.fld_rez_tc.setText(this.rezervation.getGuest_tc());
+        }
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate firstDate = LocalDate.parse(start_date,formatter);
@@ -128,25 +139,26 @@ public class RezervationView extends Layout {
                 Helper.showMsg("fill");
             } else {
                 boolean result ;
-                Rezervation rez = new Rezervation();
-                rez.setRoom_id(this.room.getId());
-                rez.setCheck_in(LocalDate.parse(start_date,DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-                rez.setCheck_out(LocalDate.parse(finish_date,DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-                rez.setTotal_price(Integer.parseInt(this.fld_total_price.getText()));
+                this.rezervation.setRoom_id(this.room.getId());
+                this.rezervation.setCheck_in(LocalDate.parse(start_date,DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+                this.rezervation.setCheck_out(LocalDate.parse(finish_date,DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+                this.rezervation.setTotal_price(Integer.parseInt(this.fld_total_price.getText()));
                 int guestNum = Integer.parseInt(this.fld_adult_number.getText()) + Integer.parseInt(this.fld_child_number.getText());
-                rez.setGuest_num((guestNum));
-                rez.setGuest_name(this.fld_rez_name.getText());
-                rez.setGuest_tc(this.fld_rez_tc.getText());
-                rez.setGuest_mail(this.fld_rez_mail.getText());
-                rez.setGuest_phone(this.fld_rez_phone.getText());
-                rez.setDay(Integer.parseInt(this.fld_day.getText()));
-
+                this.rezervation.setGuest_num((guestNum));
+                this.rezervation.setGuest_name(this.fld_rez_name.getText());
+                this.rezervation.setGuest_tc(this.fld_rez_tc.getText());
+                this.rezervation.setGuest_mail(this.fld_rez_mail.getText());
+                this.rezervation.setGuest_phone(this.fld_rez_phone.getText());
+                this.rezervation.setDay(Integer.parseInt(this.fld_day.getText()));
+                this.rezervation.setAdult_num(Integer.parseInt(this.fld_adult_number.getText()));
+                this.rezervation.setChild_num(Integer.parseInt(this.fld_child_number.getText()));
 
                 // Save or update the reservation based on whether it already exists
-                if (rez.getId() != 0){
-                    result = this.rezervationManager.update(rez);
+
+                if (this.rezervation.getId() != 0){
+                    result = this.rezervationManager.update(this.rezervation);
                 } else {
-                    result = this.rezervationManager.save(rez);
+                    result = this.rezervationManager.save(this.rezervation);
                 }
                 // Show appropriate message based on the result of the operation
                 if (result){
