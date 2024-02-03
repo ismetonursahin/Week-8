@@ -1,7 +1,7 @@
 # Turism Agency Project
 
 ## Overview
-This Java-based Turism Agency project facilitates the digital management of Patika Turizm agency operations. It includes functionalities such as hotel management, period management, room management, pricing, room search, and reservation operations.
+This Java-based Tourism Agency project facilitates the digital management Tourism agency operations. It includes functionalities such as hotel management, period management, room management, pricing, room search, and reservation operations.
 
 ## Users
 The system allows login for Admin and Agency roles.
