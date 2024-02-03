@@ -1,37 +1,61 @@
-# Turizm Acentesi Projesi
+# Turism Agency Project
 
-1- **Admin ve Çalışan Yönetimi**: Proje, sistemde yönetici (admin) ve çalışanların oluşturulmasını ve yönetilmesini sağlar. Yönetici, sisteme yeni çalışanlar ekleyebilir, mevcut çalışanları düzenleyebilir veya silebilir.
+## Overview
+This Java-based Turism Agency project facilitates the digital management of Patika Turizm agency operations. It includes functionalities such as hotel management, period management, room management, pricing, room search, and reservation operations.
 
-2- **Otel Ekleme**: Çalışanlar, sistemdeki otelleri yönetebilir. Yeni otel ekleyebilir, mevcut otellerin bilgilerini düzenleyebilir veya silebilir. Her otel için özellikler (isim, adres, iletişim bilgileri, yıldız sayısı vb.) belirlenebilir.
+## Users
+The system allows login for Admin and Agency roles.
 
-3- **Oda Yönetimi**: Çalışanlar, her bir oteldeki odaları ekleyebilir, düzenleyebilir veya silebilir. Oda tipleri (Single, Double, Suit vb.) ve özellikleri (yatak sayısı, televizyon, minibar vb.) belirlenebilir.
+## Features
 
-4- **Rezervasyon İşlemleri**: Çalışanlar, müşterilerin talepleri doğrultusunda rezervasyonlar yapabilir. Tarih aralığı, otel seçimi, oda tipi ve kişi sayıları gibi parametrelerle rezervasyonlar oluşturulabilir. Bu rezervasyonlar, sistemde görüntülenebilir ve gerektiğinde düzenlenebilir veya silinebilir.
+### 1. Admin and Employee Management:
+- Admins can add, edit, or delete employees in the system.
+- Admins can manage the details of existing employees.
 
-## Kullanılan Teknolojiler
+### 2. Hotel Management:
+- Employees can add new hotels to the system.
+- Details like Hotel Name, Address, Email, Phone, Star Rating, and Facility Features can be specified.
+- Hotel search, addition, and deletion functionalities are available.
 
+### 3. Period Management:
+- Historical periods for each hotel can be added and deleted.
+
+### 4. Room Management:
+- Employees can add, edit, or delete rooms for reservations.
+- Room types (Single, Double, Suite, etc.) and features (Bed Count, TV, Minibar, etc.) can be defined.
+
+### 5. Pricing:
+- Nightly prices for rooms are determined based on the period, pension type, and the number of adults and children.
+
+### 6. Room Search and Reservation Operations:
+- Employees can search for available rooms based on date range, region, hotel, and guest information.
+- Rooms are listed with pricing details.
+- Reservations can be made, and the total amount is calculated based on the selected options.
+- Reservation completion reduces the stock of the respective room.
+
+### 7. Reservation List:
+- Employees can list and delete reservations made.
+
+## Technologies Used
 - Java
 - Swing (GUI)
-- PostgreSQL (veritabanı)
+- PostgreSQL (Database)
 - JDBC (Java Database Connectivity)
 
-## Proje Yapısı
+## Project Structure
+- **Business:** Manages the core functionality of the application, including business processes and managers.
+- **DAO (Data Access Object):** Handles data access operations, database interactions, and query processing.
+- **Core:** Contains utility classes and basic elements providing essential functions.
+- **Entity:** Represents entities in the application, often associated with ORM techniques.
+- **Enums:** Contains constants and enum classes for representing different elements.
+- **View:** Manages UI components, windows, and user interaction.
 
-- **Business (İş Mantığı)**: Bu paket, uygulamanızın iş mantığıyla ilgili olan iş sınıflarını içerir. Genellikle iş süreçleri, yöneticiler ve servis sınıflarını içerir. Projede uygulamanın temel işlevselliğini yöneten sınıfları barındırır.
-- **DAO (Data Access Object)**: Veri erişim işlemleriyle ilgili sınıfları içeren pakettir. Veritabanı ile etkileşim, sorgular ve veri kayıtlarının işlenmesi gibi görevleri gerçekleştiren veri erişim katmanını içerir. Bu sınıflar genellikle veritabanı işlemlerini soyutlar ve uygulama katmanının veri tabanına erişimini yönetir.
-- **Core (Çekirdek)** :Bu paket, uygulamanızın temel yapı taşlarını içerir. Genellikle genel işlevselliği, yardımcı sınıfları ve çok sık kullanılan temel öğeleri içerir. Bu sınıflar, uygulamanızın farklı bölümlerinde kullanılan temel fonksiyonları sağlar.
-- **Entity (Varlık)**: Bu paket, uygulamanızın varlık sınıflarını içerir. Genellikle veritabanı tablolarını temsil eden sınıfları içerir. Bu sınıflar genellikle nesne ilişkisel haritalama (ORM) teknikleri ile ilişkilendirilmiştir ve veritabanı tablolarındaki verileri temsil eder.
-- **Enums (Sabitler)**: Bu paket, uygulamanızın farklı öğelerini temsil etmek için kullanılan sabitlerin ve enum sınıflarının bulunduğu alandır. Bu sınıflar genellikle belirli bir öğenin farklı durumlarını temsil eder.
-- **View (Görünüm):** Bu paket, kullanıcı arayüzü (UI) bileşenlerini ve sınıflarını içerir. Genellikle Swing, JavaFX veya başka bir UI framework'ü kullanılarak oluşturulan pencere, form ve diğer arayüz öğelerini içerir. Kullanıcı ile etkileşimi yönetir ve UI'nın işlevselliğini içerir.
+## How to Run
+1. Clone the project to your computer.
+2. Execute the `tourism_agency.sql` file in PostgreSQL.
+3. Open the project files in a Java IDE.
+4. Run the `App` class to start the application.
 
-## Nasıl Çalıştırılır
-
-1. Projeyi bilgisayarınıza klonlayın.
-2. PostgreSQL'de tourism_agency.sql uzantılı dosyayı çalıştırın .
-3. Proje dosyalarını bir Java IDE'sinde açın.
-4. `App` sınıfını çalıştırarak uygulamayı başlatın.
-
-## Notlar
-
-- Yeni güncellemeler eklenecektir.
-- [Projenin çalışır halini izlemek için tıklayınız](https://www.loom.com/share/d49ce4b9bdfa444f94b1bea7167a767b)
+## Notes
+- Further updates will be implemented.
+- For a demo of the project, [click here](link_to_working_version).
