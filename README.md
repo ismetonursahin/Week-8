@@ -1,6 +1,12 @@
 # Turizm Acentesi Projesi
 
-Bu proje, Patika Turizm acentesinin dijital ortamda işlerini yürütebilmesini sağlamak için geliştirilmiş bir Java uygulamasıdır.
+1- **Admin ve Çalışan Yönetimi**: Proje, sistemde yönetici (admin) ve çalışanların oluşturulmasını ve yönetilmesini sağlar. Yönetici, sisteme yeni çalışanlar ekleyebilir, mevcut çalışanları düzenleyebilir veya silebilir.
+
+2- **Otel Ekleme**: Çalışanlar, sistemdeki otelleri yönetebilir. Yeni otel ekleyebilir, mevcut otellerin bilgilerini düzenleyebilir veya silebilir. Her otel için özellikler (isim, adres, iletişim bilgileri, yıldız sayısı vb.) belirlenebilir.
+
+3- **Oda Yönetimi**: Çalışanlar, her bir oteldeki odaları ekleyebilir, düzenleyebilir veya silebilir. Oda tipleri (Single, Double, Suit vb.) ve özellikleri (yatak sayısı, televizyon, minibar vb.) belirlenebilir.
+
+4- **Rezervasyon İşlemleri**: Çalışanlar, müşterilerin talepleri doğrultusunda rezervasyonlar yapabilir. Tarih aralığı, otel seçimi, oda tipi ve kişi sayıları gibi parametrelerle rezervasyonlar oluşturulabilir. Bu rezervasyonlar, sistemde görüntülenebilir ve gerektiğinde düzenlenebilir veya silinebilir.
 
 ## Kullanılan Teknolojiler
 
