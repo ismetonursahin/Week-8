@@ -86,7 +86,6 @@ public class UserDao {
     }
     public boolean update(User user){
         String query = "UPDATE public.users SET " +
-                "user_id = ? , " +
                 "name = ? , " +
                 "username = ? , " +
                 "password = ? , " +
@@ -94,11 +93,11 @@ public class UserDao {
                 "WHERE user_id = ? ";
         try {
             PreparedStatement pr = this.con.prepareStatement(query);
-            pr.setInt(1, user.getId());
-            pr.setString(2, user.getName());
-            pr.setString(3, user.getUsername());
-            pr.setString(4, user.getPassword());
-            pr.setString(5, user.getRole());
+            pr.setString(1, user.getName());
+            pr.setString(2, user.getUsername());
+            pr.setString(3, user.getPassword());
+            pr.setString(4, user.getRole());
+            pr.setInt(5, user.getId());
             return pr.executeUpdate() != -1;
         }catch (SQLException e){
             e.printStackTrace();

@@ -14,7 +14,7 @@ public class UserView extends Layout {
     private JTextField fld_password;
     private JButton btn_user_save;
     private JComboBox<ComboItem> cmb_role;
-    private User user ;
+    private User user;
     private UserManager userManager;
 
 
@@ -23,7 +23,7 @@ public class UserView extends Layout {
         this.user = user;
         this.add(container);
         this.guiInitilaze(400, 500);
-        for (User u : this.userManager.findAll()){
+        for (User u : this.userManager.findAll()) {
             this.cmb_role.addItem(new ComboItem(u.getId(), u.getRole()));
         }
 
@@ -31,7 +31,7 @@ public class UserView extends Layout {
             this.fld_name.setText(user.getName());
             this.fld_username.setText(user.getUsername());
             this.fld_password.setText(user.getPassword());
-            ComboItem defaultUser = new ComboItem(this.user.getId(),this.user.getRole());
+            ComboItem defaultUser = new ComboItem(this.user.getId(), this.user.getRole());
             this.cmb_role.getModel().setSelectedItem(defaultUser);
 
         }
@@ -46,14 +46,19 @@ public class UserView extends Layout {
                 Helper.showMsg("fill");
 
             } else {
-
+                boolean result = false;
                 ComboItem selectedItem = (ComboItem) cmb_role.getSelectedItem();
                 this.user.setName(this.fld_name.getText());
                 this.user.setUsername(this.fld_username.getText());
                 this.user.setPassword(this.fld_password.getText());
                 this.user.setRole(selectedItem.getValue());
 
-                if (this.userManager.save(this.user)) {
+                if (user.getId() != 0) {
+                    result = this.userManager.update(this.user);
+                } else {
+                    result = this.userManager.save(this.user);
+                }
+                if (result) {
                     Helper.showMsg("done");
                     dispose();
                 } else {

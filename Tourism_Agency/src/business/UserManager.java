@@ -2,6 +2,7 @@ package business;
 
 import core.Helper;
 import dao.UserDao;
+import entity.Rezervation;
 import entity.User;
 
 import java.util.ArrayList;
@@ -42,6 +43,13 @@ public class UserManager {
         return userRowList;
     }
 
+    public boolean update(User user) {
+        if (this.getById(user.getId()) == null) {
+            Helper.showMsg(user.getId() + "ID Kayıtlı Kullanıcı Bulunamadı.");
+            return false;
+        }
+        return this.userDao.update(user);
+    }
     public ArrayList<Object[]> getForTableFilter(String selectedRole , int size){
         ArrayList<Object[]> userRowList = new ArrayList<>();
         for(User user : this.userDao.filter(selectedRole)){
@@ -66,7 +74,7 @@ public class UserManager {
     }
     public boolean delete(int id) {
         if (this.getById(id) == null) {
-            Helper.showMsg(id + " ID Kayıtlı Model Bulunamadı.");
+            Helper.showMsg(id + " ID Kayıtlı Kullanıcı Bulunamadı.");
             return false;
         }
         return this.userDao.delete(id);

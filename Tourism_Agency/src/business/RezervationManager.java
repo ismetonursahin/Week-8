@@ -47,7 +47,7 @@ public class RezervationManager {
 
     public boolean update(Rezervation rezervation) {
         if (this.getById(rezervation.getId()) == null) {
-            Helper.showMsg(rezervation.getId() + "ID Kayıtlı Model Bulunamadı.");
+            Helper.showMsg(rezervation.getId() + "ID Kayıtlı Rezervasyon Bulunamadı.");
             return false;
         }
         return this.rezervationDao.update(rezervation);
@@ -64,7 +64,7 @@ public class RezervationManager {
 
     public boolean delete(int id) {
         if (this.getById(id) == null) {
-            Helper.showMsg(id + " ID Kayıtlı Model Bulunamadı.");
+            Helper.showMsg(id + " ID Kayıtlı Rezervasyon Bulunamadı.");
             return false;
         }
         return this.rezervationDao.delete(id);
