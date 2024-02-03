@@ -18,6 +18,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class EmployeeView extends Layout {
@@ -197,13 +198,20 @@ public class EmployeeView extends Layout {
             int selectedRoomId = selectReservation.getRoom_id();
             Room selectedRoom = this.roomManager.getById(selectedRoomId);
 
-            String inDate = (this.fld_strt_date.getText());
-            String outDate = (this.fld_finish_date.getText());
+            String inDate = (selectReservation.getCheck_in().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+            String outDate = (selectReservation.getCheck_out().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
 
             String adultNum = String.valueOf(this.rezervationManager.getById(selectedRezId).getAdult_num()) ;
             String childNum = String.valueOf(this.rezervationManager.getById(selectedRezId).getChild_num());
 
-            RezervationView rezervationView = new RezervationView(selectReservation, selectedRoom, inDate, outDate, adultNum, childNum);
+            RezervationView rezervationView = new RezervationView(
+                    selectReservation,
+                    selectedRoom,
+                    inDate,
+                    outDate,
+                    adultNum,
+                    childNum
+            );
             rezervationView.addWindowListener(new WindowAdapter() {
                 @Override
                 public void windowClosed(WindowEvent e) {

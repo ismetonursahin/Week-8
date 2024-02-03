@@ -5,7 +5,9 @@
     <constraints>
       <xy x="-17" y="133" width="1250" height="482"/>
     </constraints>
-    <properties/>
+    <properties>
+      <background color="-14473424"/>
+    </properties>
     <border type="none"/>
     <children>
       <grid id="ad436" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -13,7 +15,9 @@
         <constraints>
           <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
-        <properties/>
+        <properties>
+          <background color="-14473424"/>
+        </properties>
         <border type="none"/>
         <children>
           <component id="b510e" class="javax.swing.JLabel">
@@ -22,7 +26,7 @@
             </constraints>
             <properties>
               <font name="Microsoft YaHei UI" size="24" style="1"/>
-              <foreground color="-11912766"/>
+              <foreground color="-7363598"/>
               <text value="Tourism Agency"/>
             </properties>
           </component>
@@ -46,7 +50,7 @@
             <properties>
               <background color="-13807244"/>
               <font name="Calibri" size="20" style="1"/>
-              <foreground color="-12691596"/>
+              <foreground color="-10130958"/>
               <text value="kullanıcı"/>
             </properties>
           </component>
@@ -58,7 +62,9 @@
             <preferred-size width="200" height="200"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <background color="-14473424"/>
+        </properties>
         <border type="none"/>
         <children>
           <grid id="ff849" binding="pnl_hotels" layout-manager="GridLayoutManager" row-count="8" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -66,7 +72,9 @@
             <constraints>
               <tabbedpane title="Otel"/>
             </constraints>
-            <properties/>
+            <properties>
+              <background color="-14473424"/>
+            </properties>
             <border type="none"/>
             <children>
               <scrollpane id="3fa31" binding="scrl_hotels">
@@ -74,13 +82,17 @@
                   <grid row="1" column="0" row-span="3" col-span="3" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <background color="-13629431"/>
+                  <background color="-14473424"/>
                 </properties>
                 <border type="none"/>
                 <children>
                   <component id="218b3" class="javax.swing.JTable" binding="tbl_hotels">
                     <constraints/>
-                    <properties/>
+                    <properties>
+                      <background color="-14473424"/>
+                      <foreground color="-262"/>
+                      <gridColor color="-13807244"/>
+                    </properties>
                   </component>
                 </children>
               </scrollpane>
@@ -96,12 +108,18 @@
                     <constraints>
                       <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                     </constraints>
-                    <properties/>
+                    <properties>
+                      <background color="-14473424"/>
+                    </properties>
                     <border type="none"/>
                     <children>
                       <component id="233f3" class="javax.swing.JTable" binding="tbl_pension">
                         <constraints/>
-                        <properties/>
+                        <properties>
+                          <background color="-14473424"/>
+                          <foreground color="-262"/>
+                          <gridColor color="-13807244"/>
+                        </properties>
                       </component>
                     </children>
                   </scrollpane>
@@ -119,12 +137,18 @@
                     <constraints>
                       <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                     </constraints>
-                    <properties/>
+                    <properties>
+                      <background color="-14473424"/>
+                    </properties>
                     <border type="none"/>
                     <children>
                       <component id="3c0a4" class="javax.swing.JTable" binding="tbl_season">
                         <constraints/>
-                        <properties/>
+                        <properties>
+                          <background color="-14473424"/>
+                          <foreground color="-262"/>
+                          <gridColor color="-13807244"/>
+                        </properties>
                       </component>
                     </children>
                   </scrollpane>
@@ -165,19 +189,27 @@
             <constraints>
               <tabbedpane title="Oda"/>
             </constraints>
-            <properties/>
+            <properties>
+              <background color="-14473424"/>
+            </properties>
             <border type="none"/>
             <children>
               <scrollpane id="7c53e" binding="scrl_room">
                 <constraints>
                   <grid row="2" column="0" row-span="1" col-span="11" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
-                <properties/>
+                <properties>
+                  <background color="-14473424"/>
+                </properties>
                 <border type="none"/>
                 <children>
                   <component id="dc2d5" class="javax.swing.JTable" binding="tbl_room">
                     <constraints/>
-                    <properties/>
+                    <properties>
+                      <background color="-14473424"/>
+                      <foreground color="-262"/>
+                      <gridColor color="-12691596"/>
+                    </properties>
                   </component>
                 </children>
               </scrollpane>
@@ -186,6 +218,8 @@
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <font name="Calibri" size="16" style="1"/>
+                  <foreground color="-262"/>
                   <text value="Otel Adı"/>
                 </properties>
               </component>
@@ -194,6 +228,8 @@
                   <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <font name="Calibri" size="16" style="1"/>
+                  <foreground color="-262"/>
                   <text value="Çocuk Sayısı"/>
                 </properties>
               </component>
@@ -202,6 +238,8 @@
                   <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <font name="Calibri" size="16" style="1"/>
+                  <foreground color="-262"/>
                   <text value="Yetişkin Sayısı"/>
                 </properties>
               </component>
@@ -210,6 +248,8 @@
                   <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <font name="Calibri" size="16" style="1"/>
+                  <foreground color="-262"/>
                   <text value="Çıkış Tarihi"/>
                 </properties>
               </component>
@@ -218,6 +258,8 @@
                   <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <font name="Calibri" size="16" style="1"/>
+                  <foreground color="-262"/>
                   <text value="Giriş Tarihi"/>
                 </properties>
               </component>
@@ -226,6 +268,8 @@
                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <font name="Calibri" size="16" style="1"/>
+                  <foreground color="-262"/>
                   <text value="Şehir"/>
                 </properties>
               </component>
@@ -321,7 +365,11 @@
                 <children>
                   <component id="a83c8" class="javax.swing.JTable" binding="tbl_rez">
                     <constraints/>
-                    <properties/>
+                    <properties>
+                      <background color="-14473424"/>
+                      <foreground color="-262"/>
+                      <gridColor color="-12691596"/>
+                    </properties>
                   </component>
                 </children>
               </scrollpane>
