@@ -28,4 +28,4 @@ Bu proje, Patika Turizm acentesinin dijital ortamda işlerini yürütebilmesini 
 ## Notlar
 
 - Yeni güncellemeler eklenecektir.
-- Issues kısmında projenin tanıtım videosu vardır.
+- [Projenin çalışır halini izlemek için tıklayınız](https://www.loom.com/share/d49ce4b9bdfa444f94b1bea7167a767b)
