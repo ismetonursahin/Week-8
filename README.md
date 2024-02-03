@@ -1,4 +1,4 @@
-# Turism Agency Project
+# Tourism Agency Project
 
 ## Overview
 This Java-based Tourism Agency project facilitates the digital management Tourism agency operations. It includes functionalities such as hotel management, period management, room management, pricing, room search, and reservation operations.
