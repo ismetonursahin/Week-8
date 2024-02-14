@@ -60,4 +60,4 @@ The system allows login for Admin and Agency roles.
 - Further updates will be implemented.
 - For a demo of the project, [click here](https://www.loom.com/share/d49ce4b9bdfa444f94b1bea7167a767b).
 -----
-![](Tourism_Agency/screenshots/admin_screen)
+![](Tourism_Agency/screenshots/admin_screen.png)
